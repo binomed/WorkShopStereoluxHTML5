@@ -1,3 +1,11 @@
+<div class="page-header">
+  <h1>User Media <small>Amusez vous avec la caméra</small></h1>
+</div>
 <div>
-User Media
+	<div ng-hide="available">
+		Le userMedia n'est pas disponible pour votre navigateur, veuillez utiliser Chrome ou FireFox
+	</div>
+	<div ng-show="available">
+		<user-media></user-media>
+	</div>
 </div>

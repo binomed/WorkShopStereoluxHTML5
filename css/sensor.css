@@ -9,3 +9,18 @@ body{
 	font-size: 14px;
 }
 
+/*
+* Directives
+*/
+
+.qrCodeDirective{
+	text-align: center;
+}
+
+.qrCodeDirective ul{
+	list-style: none;
+}
+
+.qrCodeDirective img{
+	margin: auto;
+}

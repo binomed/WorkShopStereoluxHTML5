@@ -1,6 +1,8 @@
 sensor.controller('UserMediaCtrl', 
-	['$rootScope', '$scope', '$http',
-	function($rootScope, $scope, $http) {
+	['$rootScope', '$scope', '$http','CheckFactory',
+	function($rootScope, $scope, $http, check) {
+
+		$scope.available = check.userMediaAvailable();
 
 
 }]);

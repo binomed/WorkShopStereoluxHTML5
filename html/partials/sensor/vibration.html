@@ -1,3 +1,11 @@
+<div class="page-header">
+  <h1>Vibration <small>Choississez les modes de vibration</small></h1>
+</div>
 <div>
-Vibration
+	<div ng-hide="available">
+		La vibration n'est pas disponible pour votre navigateur, veuillez utiliser FireFox Mobile
+	</div>
+	<div ng-show="available">
+		<vibration></vibration>
+	</div>
 </div>

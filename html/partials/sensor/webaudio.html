@@ -1,3 +1,11 @@
+<div class="page-header">
+  <h1>Web Audio <small>jouez un son</small></h1>
+</div>
 <div>
-Web Audio
+	<div ng-hide="available">
+		Le webAudio n'est pas disponible pour votre navigateur, veuillez utiliser Chrome ou FireFox
+	</div>
+	<div ng-show="available">
+		<web-audio></web-audio>
+	</div>
 </div>
