@@ -1,2 +1,2 @@
-﻿var components = angular.module('Sensor.components',[])
+﻿var components = angular.module('sensor.components',[])
 ;

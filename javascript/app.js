@@ -12,5 +12,6 @@ app.config(['$routeProvider', function($routeProvider) {
     .when('/usermedia',       { controller: 'UserMediaCtrl',    templateUrl: 'partials/sensor/usermedia.html' })
     .when('/vibration',       { controller: 'VibrationCtrl',    templateUrl: 'partials/sensor/vibration.html' })
     .when('/webspeech',       { controller: 'WebSpeechCtrl',    templateUrl: 'partials/sensor/webspeech.html' })
+    .otherwise(                     { redirectTo:  '/main' });
     ;
 }]);
