@@ -9,6 +9,14 @@ body{
 	font-size: 14px;
 }
 
+
+#main-content{
+	width: 100%;
+	height: 100%;
+}
+
+
+
 /*
 * Directives
 */
@@ -24,3 +32,202 @@ body{
 .qrCodeDirective img{
 	margin: auto;
 }
+
+/***
+ *       ____       _            _        _   _             
+ *      / __ \     (_)          | |      | | (_)            
+ *     | |  | |_ __ _  ___ _ __ | |_ __ _| |_ _  ___  _ __  
+ *     | |  | | '__| |/ _ \ '_ \| __/ _` | __| |/ _ \| '_ \ 
+ *     | |__| | |  | |  __/ | | | || (_| | |_| | (_) | | | |
+ *      \____/|_|  |_|\___|_| |_|\__\__,_|\__|_|\___/|_| |_|
+ *                                                          
+ *                                                          
+ */
+
+.orientation{
+	position: relative;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 500px;
+}
+
+.safe_lock_funny_win{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	background-image: url("../assets/images/excited-adventure-time.gif");
+	background-size: 400px 224px;
+	background-repeat: no-repeat;
+	width: 400px;
+	height: 224px;
+	margin-left:  -200px;
+	margin-top: -112px;
+}
+
+
+.safe_lock_door{
+	position: absolute;	
+	background-image: url("../assets/images/fabric_plaid.png");
+	left: 50%;
+	top : 0;
+	width: 400px;
+	height: 400px;
+	margin-left:  -200px;
+}
+
+.safe_lock_door.open{
+
+	-webkit-animation: openAnimation 2s 1 ease;
+	-webkit-transform-style:preserve-3d;
+	-webkit-transform: perspective(1000) rotateY(-90deg);
+    -webkit-transform-origin: 0% 0%;
+	
+
+	-moz-animation-name: openAnimation 2s 1 ease;
+	-moz-transform-style:preserve-3d;
+	-moz-transform: perspective(1000) rotateY(-90deg);
+    -moz-transform-origin: 0% 0%;
+	
+
+	animation-name: openAnimation 2s 1 ease;
+	transform-style:preserve-3d;
+	transform: perspective(1000) rotateY(-90deg);
+    transform-origin: 0% 0%;
+	
+}
+
+.safe_lock_bg{
+	position: absolute;
+	background-image: url("../assets/images/safe_lock_bg.png");
+	background-size: 300px;
+	background-repeat: no-repeat;
+	left: 50%;
+	top : 50%;
+	width: 300px;
+	height: 300px;
+	margin-left:  -150px;	
+	margin-top:  -150px;	
+}
+
+.safe_lock{
+	position: absolute;
+	background-image: url("../assets/images/safe_lock.png");
+	background-size: 300px;
+	background-repeat: no-repeat;
+	left: 50%;
+	top : 50%;
+	width: 300px;
+	height: 300px;
+	margin-left:  -150px;	
+	margin-top:  -150px;	
+}
+
+@keyframes openAnimation {
+    from {
+    	transform-style:preserve-3d;
+       	transform: perspective(1000) rotateY(0deg);
+       	transform-origin: 0% 0%;
+    }
+    to {
+    	transform-style:preserve-3d;
+       	transform: perspective(1000) rotateY(-90deg);
+       	transform-origin: 0% 0%;
+    }
+}
+@-webkit-keyframes openAnimation {
+    from {
+    	-webkit-transform-style:preserve-3d;
+       	-webkit-transform: perspective(1000) rotateY(0deg);
+        -webkit-transform-origin: 0% 0%;
+    }
+    to {
+    	-webkit-transform-style:preserve-3d;
+       	-webkit-transform: perspective(1000) rotateY(-90deg);
+       	-webkit-transform-origin: 0% 0%;
+    }
+}
+@-moz-keyframes openAnimation {
+    from {
+    	-moz-transform-style:preserve-3d;
+       	-moz-transform: perspective(1000) rotateY(0deg);
+       	-moz-transform-origin: 0% 0%;
+    }
+    to {
+    	-moz-transform-style:preserve-3d;
+       	-moz-transform: perspective(1000) rotateY(-90deg);
+       	-moz-transform-origin: 0% 0%;
+    }
+}
+
+/***
+ *      __  __       _   _             
+ *     |  \/  |     | | (_)            
+ *     | \  / | ___ | |_ _  ___  _ __  
+ *     | |\/| |/ _ \| __| |/ _ \| '_ \ 
+ *     | |  | | (_) | |_| | (_) | | | |
+ *     |_|  |_|\___/ \__|_|\___/|_| |_|
+ *                                     
+ *                                     
+ */
+
+
+
+/***
+ *      _____               _           _ _         
+ *     |  __ \             (_)         (_) |        
+ *     | |__) | __ _____  ___ _ __ ___  _| |_ _   _ 
+ *     |  ___/ '__/ _ \ \/ / | '_ ` _ \| | __| | | |
+ *     | |   | | | (_) >  <| | | | | | | | |_| |_| |
+ *     |_|   |_|  \___/_/\_\_|_| |_| |_|_|\__|\__, |
+ *                                             __/ |
+ *                                            |___/ 
+ */
+
+
+/***
+ *      _      _       _     _   
+ *     | |    (_)     | |   | |  
+ *     | |     _  __ _| |__ | |_ 
+ *     | |    | |/ _` | '_ \| __|
+ *     | |____| | (_| | | | | |_ 
+ *     |______|_|\__, |_| |_|\__|
+ *                __/ |          
+ *               |___/           
+ */
+
+
+/***
+ *      _    _            __  __          _ _       
+ *     | |  | |          |  \/  |        | (_)      
+ *     | |  | |___  ___  | \  / | ___  __| |_  __ _ 
+ *     | |  | / __|/ _ \ | |\/| |/ _ \/ _` | |/ _` |
+ *     | |__| \__ \  __/ | |  | |  __/ (_| | | (_| |
+ *      \____/|___/\___| |_|  |_|\___|\__,_|_|\__,_|
+ *                                                  
+ *                                                  
+ */
+
+
+/***
+ *     __      ___ _               _   _             
+ *     \ \    / (_) |             | | (_)            
+ *      \ \  / / _| |__  _ __ __ _| |_ _  ___  _ __  
+ *       \ \/ / | | '_ \| '__/ _` | __| |/ _ \| '_ \ 
+ *        \  /  | | |_) | | | (_| | |_| | (_) | | | |
+ *         \/   |_|_.__/|_|  \__,_|\__|_|\___/|_| |_|
+ *                                                   
+ *                                                   
+ */
+
+
+/***
+ *     __          __  _        _____                      _     
+ *     \ \        / / | |      / ____|                    | |    
+ *      \ \  /\  / /__| |__   | (___  _ __   ___  ___  ___| |__  
+ *       \ \/  \/ / _ \ '_ \   \___ \| '_ \ / _ \/ _ \/ __| '_ \ 
+ *        \  /\  /  __/ |_) |  ____) | |_) |  __/  __/ (__| | | |
+ *         \/  \/ \___|_.__/  |_____/| .__/ \___|\___|\___|_| |_|
+ *                                   | |                         
+ *                                   |_|                         
+ */

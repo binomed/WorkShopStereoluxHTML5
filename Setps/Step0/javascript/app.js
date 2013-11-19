@@ -1,7 +1,7 @@
 ﻿/* exported app */
 'use strict';
 
-var app = angular.module('sensor', ['ngRoute','sensor.main', 'sensor.components']);
+var app = angular.module('sensor', ['sensor.main', 'sensor.components']);
 
 app.config(['$routeProvider', function($routeProvider) {
     $routeProvider

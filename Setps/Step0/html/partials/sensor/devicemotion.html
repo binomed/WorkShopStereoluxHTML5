@@ -1,0 +1,11 @@
+<div class="page-header">
+  <h1>Device Motion <small>faites un mouvement de shaker pour recharger la batterie</small></h1>
+</div>
+<div>
+	<div ng-hide="available">
+		Le deviceMotion n'est pas disponible pour votre navigateur, veuillez utiliser Chrome mobile ou FireFox mobile
+	</div>
+	<div ng-show="available">
+		<device-motion></device-motion>
+	</div>
+</div>

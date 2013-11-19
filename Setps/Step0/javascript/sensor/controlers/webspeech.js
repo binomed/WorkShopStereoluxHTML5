@@ -1,8 +1,8 @@
-sensor.controller('WebAudioCtrl', 
+sensor.controller('WebSpeechCtrl', 
 	['$rootScope', '$scope', '$http','CheckFactory',
 	function($rootScope, $scope, $http, check) {
 
-		$scope.available = check.webAudioAvailable();
+		$scope.available = check.webSpeechAvailable();
 
 
 }]);

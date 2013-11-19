@@ -1,6 +1,6 @@
-components.directive('webAudio', function () {
+components.directive('webSpeech', function () {
    var directiveDefinitionObject = {
-    templateUrl: 'partials/components/webaudio.html',
+    templateUrl: 'partials/components/webspeech.html',
     replace: true,
     restrict: 'E',
     scope: {        
