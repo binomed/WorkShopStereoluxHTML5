@@ -23,7 +23,7 @@ components.directive('orientation',  ['WebSocketFactory', 'WebAudioFactory','$ro
             openTheDoor();
           }
         }else{
-          lock.css(prefix,'rotateY('+zAlpha+'deg)');
+          lock.css(prefix,'rotateZ('+zAlpha+'deg)');
         }
       }
 
@@ -44,7 +44,7 @@ components.directive('orientation',  ['WebSocketFactory', 'WebAudioFactory','$ro
         var alpha = event.alpha;
         var beta = event.beta;
         var gamma = event.gamma;
-        updateRotation(alpha);
+        updateRotation(Math.round(alpha));
         socket.sendOrientation(alpha);
       }, true);
 
