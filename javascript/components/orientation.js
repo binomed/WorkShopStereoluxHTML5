@@ -31,7 +31,7 @@ components.directive('orientation',  ['WebSocketFactory', 'WebAudioFactory','$ro
         lockDoor.addClass('open');
       }
     
-      $rootScope.on('SocketTypeOrientationEvent', function(evt, data){
+      $rootScope.$on('SocketTypeOrientationEvent', function(evt, data){
         updateRotation(data);
       });
 
