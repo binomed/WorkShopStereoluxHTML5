@@ -1,6 +1,6 @@
 sensor.controller('SensorCtrl',	
-	['$rootScope', '$scope', '$http',
-	function($rootScope, $scope, $http) {
+	['$rootScope', '$scope', '$http', 'WebSocketFactory',
+	function($rootScope, $scope, $http, socket) {
 
 
 }]);

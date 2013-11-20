@@ -1,4 +1,4 @@
-components.directive('qrcodes', function () {
+components.directive('qrcodes', ['ModelFactory', function (model) {
    var directiveDefinitionObject = {
     templateUrl: 'partials/components/qrcode.html',
     replace: true,
@@ -38,11 +38,15 @@ components.directive('qrcodes', function () {
 	        .error(function() { 
 	            // TODO 
 	        });
+
+	        // Check Mobile or Desktop version
+	        model.mobile = $('#qrCodeDiv').is(':hidden');
+
     	}, 500);
         
     }
   };
   return directiveDefinitionObject;
-});
+}]);
 
  

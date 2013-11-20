@@ -7,8 +7,9 @@ sensor.factory('ModelFactory',['$rootScope', '$http',function($rootScope, $http)
 	******************************
 	*/
 
+	var mobile;
+
 	return{
-		// CSS
-		
+		mobile : mobile
 	};
 }]);

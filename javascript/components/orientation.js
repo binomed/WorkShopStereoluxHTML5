@@ -12,14 +12,14 @@ components.directive('orientation',  ['WebSocketFactory', 'WebAudioFactory','$ro
       var prefix = Modernizr.prefixed('transform');
         
         
-      var angles = [105,200,50];
+      var angles = [105,95,115];
       var lockMoves = 0;
 
       function updateRotation(zAlpha){
-        if(angles[lockMoves] === zAlpha){
+        if(lockMoves < 3 && angles[lockMoves] === zAlpha){
           lockMoves++;
           audio.playSafeLock();
-          if (lockMoves === 2){
+          if (lockMoves === 3){
             openTheDoor();
           }
         }else{
@@ -35,23 +35,24 @@ components.directive('orientation',  ['WebSocketFactory', 'WebAudioFactory','$ro
         updateRotation(data);
       });
 
+      $rootScope.$on('changeRouteEvt', function(){
+        window.removeEventListener('deviceorientation', deviceOrientationListener);
+      });
 
-      setTimeout(function() {
-
-        audio.playSafeLock();
-      }, 1000);
 
       /*
       * Your Code ! 
       */
 
-      window.addEventListener('deviceorientation', function(event){
+      function deviceOrientationListener(event){        
         var alpha = Math.round(event.alpha);
         var beta = Math.round(event.beta);
         var gamma = Math.round(event.gamma);
         updateRotation(alpha);
         socket.sendOrientation(alpha);
-      }, true);
+      }
+
+      window.addEventListener('deviceorientation', deviceOrientationListener, true);
 
 
         

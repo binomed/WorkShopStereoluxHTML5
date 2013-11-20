@@ -1,12 +1,18 @@
-sensor.factory('WebSocketFactory',['$rootScope', '$http',function($rootScope, $http){
+sensor.factory('WebSocketFactory',['$rootScope', '$http', '$location', 'ModelFactory' ,
+	function($rootScope, $http, $location, model){
 
 	var socket = io.connect("http://"+location.hostname+":8080");
 
 	socket.on('message', function (data) {
 	    console.log(data);
-	    $rootScope.$broadcast('SocketType'+data.type, data.data);
+	    if (data.type === 'changeRoute' && !model.mobile){
+	    	$rootScope.$apply(function(){
+	    		$location.path(data.data);
+	    	});
+	    }else{
+	    	$rootScope.$broadcast('SocketType'+data.type, data.data);
+	    }
 	});
-
 
 	function sendData(type, data){
 		socket.emit('message',{
@@ -26,8 +32,22 @@ sensor.factory('WebSocketFactory',['$rootScope', '$http',function($rootScope, $h
 		sendData('OrientationEvent', zAlpha);
 	}
 
+	function sendDeviceMotion(xAcceleration){
+		sendData('DevieMotionEvent', xAcceleration);
+	}
+
+	function changeRoute(newRoute){
+		$rootScope.$broadcast('changeRouteEvt');
+		socket.emit('message',{
+			'type' : 'changeRoute',
+			'data' : newRoute
+		});
+	}
+
 	return{
-		sendOrientation : sendOrientation
+		sendOrientation : sendOrientation,
+		sendDeviceMotion : sendDeviceMotion,
+		changeRoute : changeRoute
 		
 	};
 }]);
