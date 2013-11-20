@@ -46,10 +46,10 @@ components.directive('orientation',  ['WebSocketFactory', 'WebAudioFactory','$ro
       */
 
       window.addEventListener('deviceorientation', function(event){
-        var alpha = event.alpha;
-        var beta = event.beta;
-        var gamma = event.gamma;
-        updateRotation(Math.round(alpha));
+        var alpha = Math.round(event.alpha);
+        var beta = Math.round(event.beta);
+        var gamma = Math.round(event.gamma);
+        updateRotation(alpha);
         socket.sendOrientation(alpha);
       }, true);
 
