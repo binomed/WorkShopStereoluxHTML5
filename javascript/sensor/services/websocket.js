@@ -23,7 +23,7 @@ sensor.factory('WebSocketFactory',['$rootScope', '$http',function($rootScope, $h
 	*/
 
 	function sendOrientation(zAlpha){
-		sendData('orientationEvent', zAlpha);
+		sendData('OrientationEvent', zAlpha);
 	}
 
 	return{
