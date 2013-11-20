@@ -8,6 +8,7 @@ sensor.factory('WebAudioFactory',['$rootScope', '$http',function($rootScope, $ht
 		console.log("No WebAPI dectect");
 	}
 
+	var SAFE_LOCK = 1;
 	var safeLockBuffer = null;
 
 	function loadSound(url, bufferToUse){
@@ -18,14 +19,18 @@ sensor.factory('WebAudioFactory',['$rootScope', '$http',function($rootScope, $ht
 		// Decode asynchronously
 		request.onload = function() {
 			context.decodeAudioData(request.response, function(buffer) {
-			  bufferToUse = buffer;
-			}, onError);
+				if (bufferToUse === SAFE_LOCK){
+			  		safeLockBuffer = buffer;
+				}
+			}, function(e){
+				console.log('Error decoding file', e);
+			});
 		}
 		request.send();
 	}
 
 	function loadSafeLockSound(){
-		loadSound("http://"+location.hostname+":8080/assets/sounds/lock-open.mp3");
+		loadSound("http://"+location.hostname+":8080/assets/sounds/lock-open.mp3", SAFE_LOCK);
 	}
 
 	function playSound(buffer){
@@ -34,6 +39,8 @@ sensor.factory('WebAudioFactory',['$rootScope', '$http',function($rootScope, $ht
 		source.connect(context.destination);       // connect the source to the context's destination (the speakers)
 		source.start(0);                           // play the source now
 	}
+
+	loadSafeLockSound();
 
 
 	/*****************************

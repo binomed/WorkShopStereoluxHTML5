@@ -36,6 +36,11 @@ components.directive('orientation',  ['WebSocketFactory', 'WebAudioFactory','$ro
       });
 
 
+      setTimeout(function() {
+
+        audio.playSafeLock();
+      }, 1000);
+
       /*
       * Your Code ! 
       */
