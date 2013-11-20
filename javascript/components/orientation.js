@@ -40,7 +40,7 @@ components.directive('orientation',  ['WebSocketFactory', 'WebAudioFactory','$ro
       * Your Code ! 
       */
 
-      window.addEventListener('deviceOrientation', function(event){
+      window.addEventListener('deviceorientation', function(event){
         var alpha = event.alpha;
         var beta = event.beta;
         var gamma = event.gamma;
