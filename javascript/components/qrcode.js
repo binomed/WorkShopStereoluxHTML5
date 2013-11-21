@@ -40,7 +40,7 @@ components.directive('qrcodes', ['ModelFactory', function (model) {
 	        });
 
 	        // Check Mobile or Desktop version
-	        model.mobile = $('#qrCodeDiv').is(':hidden');
+	        //model.mobile = $('#qrCodeDiv').is(':hidden');
 
     	}, 500);
         

@@ -13,13 +13,13 @@ components.directive('deviceMotion', ['WebSocketFactory', '$rootScope',function 
       var currentPercent = 0;
 
 
-      function updatePercent(heigth){
-        gradient.css('heigth', Math.min(heigth, maxHeight) +'px');           
+      function updatePercent(){
+        gradient.css('heigth', Math.min(currentPercent, maxHeight) +'px');           
       }
 
       $rootScope.$on('SocketTypeDevieMotionEvent', function(evt, data){
         currentPercent+=data;
-        updatePercent(currentPercent);
+        updatePercent();
       });
 
       $rootScope.$on('changeRouteEvt', function(){
@@ -35,6 +35,7 @@ components.directive('deviceMotion', ['WebSocketFactory', '$rootScope',function 
         var y = event.acceleration.y;
         var z = event.acceleration.z;
         socket.sendDeviceMotion(Math.abs(x));
+        updatePercent();
       }
 
       window.addEventListener('devicemotion', deviceMotionListener, true);
