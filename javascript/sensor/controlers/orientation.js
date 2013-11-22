@@ -4,7 +4,6 @@ sensor.controller('OrientationCtrl',
 
 		$scope.available = check.orientationAvailable();
 
-		if (model.mobile){
-			socket.changeRoute("/orientation");
-		}
+		socket.changeRoute("/orientation");
+		
 }]);

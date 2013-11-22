@@ -3,10 +3,7 @@ sensor.controller('ProximityCtrl',
 	function($rootScope, $scope, $http, check, socket, model) {
 
 		$scope.available = check.proximityAvailable();
-
-		if (model.mobile){
-			socket.changeRoute("/proximity");
-		}
-
-
+		
+		socket.changeRoute("/proximity");
+		
 }]);

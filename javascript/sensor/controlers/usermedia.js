@@ -4,9 +4,6 @@ sensor.controller('UserMediaCtrl',
 
 		$scope.available = check.userMediaAvailable();
 
-		if (model.mobile){
-			socket.changeRoute("/usermedia");
-		}
-
-
+		socket.changeRoute("/usermedia");
+		
 }]);

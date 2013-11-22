@@ -5,8 +5,6 @@ sensor.controller('WebSpeechCtrl',
 		$scope.available = check.webSpeechAvailable();
 
 
-		if (model.mobile){
-			socket.changeRoute("/webspeech");
-		}
-
+		socket.changeRoute("/webspeech");
+		
 }]);

@@ -4,9 +4,6 @@ sensor.controller('VibrationCtrl',
 
 		$scope.available = check.vibrationAvailable();
 
-		if (model.mobile){
-			socket.changeRoute("/vibration");
-		}
-
-
+		socket.changeRoute("/vibration");
+		
 }]);

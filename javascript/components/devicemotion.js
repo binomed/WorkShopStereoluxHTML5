@@ -14,7 +14,7 @@ components.directive('deviceMotion', ['WebSocketFactory', '$rootScope',function 
 
 
       function updatePercent(){
-        gradient.css('heigth', Math.min(currentPercent, maxHeight) +'px');           
+        gradient.css('height', Math.min(currentPercent, maxHeight) +'px');           
       }
 
       $rootScope.$on('SocketTypeDevieMotionEvent', function(evt, data){
@@ -23,22 +23,23 @@ components.directive('deviceMotion', ['WebSocketFactory', '$rootScope',function 
       });
 
       $rootScope.$on('changeRouteEvt', function(){
-        window.removeEventListener('devicemotion', deviceMotionListener);
+        window.removeEventListener('devicemotion', deviceMotionListener, false);
       });
 
       /*
       * Your Code ! 
       */
 
-      function deviceMotionListener(event){        
+      var deviceMotionListener = function(event){        
         var x = event.acceleration.x;
         var y = event.acceleration.y;
         var z = event.acceleration.z;
         socket.sendDeviceMotion(Math.abs(x));
+        currentPercent+=Math.abs(x);
         updatePercent();
       }
 
-      window.addEventListener('devicemotion', deviceMotionListener, true);
+      window.addEventListener('devicemotion', deviceMotionListener, false);
 
         
     }

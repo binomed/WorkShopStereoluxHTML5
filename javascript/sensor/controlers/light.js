@@ -3,8 +3,7 @@ sensor.controller('LightCtrl',
 	function($rootScope, $scope, $http, check, socket, model) {
 
 		$scope.available = check.lightAvailable();
-
-		if (model.mobile){
-			socket.changeRoute("/light");
-		}
+		
+		socket.changeRoute("/light");
+		
 }]);

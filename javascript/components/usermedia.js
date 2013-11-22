@@ -1,4 +1,4 @@
-components.directive('userMedia', ['ModelFactory', function (model) {
+components.directive('userMedia', ['$rootScope','ModelFactory', function ($rootScope, model) {
    var directiveDefinitionObject = {
     templateUrl: 'partials/components/usermedia.html',
     replace: true,
@@ -8,35 +8,42 @@ components.directive('userMedia', ['ModelFactory', function (model) {
     link: function postLink($scope, iElement, iAttrs) { 
 
         var videoParent = iElement.find('.videoParent');
-        var video = iElement.find('video');
+        var video = iElement.find('video')[0];
+        var localStream = null;
 
-        
-        //if (model.mobile){
-
-
-
-          /*
-          * Your Code ! 
-          */
-
-          var constraints = {video: true};
-
-          var gUM = Modernizr.prefixed('getUserMedia', navigator);
-
-          function handleUserMedia(stream){
-            video[0].src = window.URL.createObjectURL(stream);
-            video[0].play();
-            videoParent.addClass('rotate');
+        $rootScope.$on('changeRouteEvt', function(){
+          if (video) {
+            video.pause();
           }
+          if (localStream){
+            localStream.stop();
+          } 
+          localStream = null;
+        });
 
-          function handleUserMediaError(error){
-            console.log('navigator.getUserMedia error: ', error);
-          }
+        function handleUserMediaError(error){
+          console.log('navigator.getUserMedia error: ', error);
+        }
 
-          gUM(constraints, handleUserMedia, handleUserMediaError);
+        /*
+        * Your Code ! 
+        */
+
+        var constraints = {video: true};
+
+        var gUM = Modernizr.prefixed('getUserMedia', navigator);
+
+        function handleUserMedia(stream){
+          localStream = stream;
+          video.src = window.URL.createObjectURL(stream);
+          video.play();
+          videoParent.addClass('rotate');
+        }
 
 
-        //}
+        gUM(constraints, handleUserMedia, handleUserMediaError);
+
+
 
         
 

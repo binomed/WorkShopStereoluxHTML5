@@ -36,7 +36,7 @@ components.directive('orientation',  ['WebSocketFactory', 'WebAudioFactory','$ro
       });
 
       $rootScope.$on('changeRouteEvt', function(){
-        window.removeEventListener('deviceorientation', deviceOrientationListener);
+        window.removeEventListener('deviceorientation', deviceOrientationListener, false);
       });
 
 
@@ -44,7 +44,7 @@ components.directive('orientation',  ['WebSocketFactory', 'WebAudioFactory','$ro
       * Your Code ! 
       */
 
-      function deviceOrientationListener(event){        
+      var deviceOrientationListener = function(event){        
         var alpha = Math.round(event.alpha);
         var beta = Math.round(event.beta);
         var gamma = Math.round(event.gamma);
@@ -52,7 +52,7 @@ components.directive('orientation',  ['WebSocketFactory', 'WebAudioFactory','$ro
         socket.sendOrientation(alpha);
       }
 
-      window.addEventListener('deviceorientation', deviceOrientationListener, true);
+      window.addEventListener('deviceorientation', deviceOrientationListener, false);
 
 
         

@@ -4,7 +4,6 @@ sensor.controller('DeviceMotionCtrl',
 
 		$scope.available = check.deviceMotionAvailable();
 	
-		if (model.mobile){
-			socket.changeRoute("/devicemotion");
-		}
+		socket.changeRoute("/devicemotion");
+		
 }]);

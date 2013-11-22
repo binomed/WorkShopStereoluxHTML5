@@ -5,8 +5,9 @@ sensor.factory('WebSocketFactory',['$rootScope', '$http', '$location', 'ModelFac
 
 	socket.on('message', function (data) {
 	    console.log(data);
-	    if (data.type === 'changeRoute' && !model.mobile){
+	    if (data.type === 'changeRoute' && !model.mobile && data.source){
 	    	$rootScope.$apply(function(){
+	    		$rootScope.$broadcast('changeRouteEvt');
 	    		$location.path(data.data);
 	    	});
 	    }else{
@@ -17,7 +18,8 @@ sensor.factory('WebSocketFactory',['$rootScope', '$http', '$location', 'ModelFac
 	function sendData(type, data){
 		socket.emit('message',{
 			'type' : type,
-			'data' : data
+			'data' : data, 
+			'source' : model.mobile
 		});
 	}
 
