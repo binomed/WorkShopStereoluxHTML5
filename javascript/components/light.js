@@ -24,6 +24,11 @@ components.directive('light', ['$rootScope', function ($rootScope) {
         window.removeEventListener('devicelight', deviceLightHandler, false);
       });
 
+      $rootScope.$on('SocketTypeLightEvent', function(event, data){
+        percent = data;
+        updateLight();
+      });
+
      /*
       * Your Code ! 
       */
@@ -31,6 +36,7 @@ components.directive('light', ['$rootScope', function ($rootScope) {
       var deviceLightHandler = function(event) {
         var value = Math.min(45, event.value);        
         percent = Math.round((value / 45) * 100);       
+        socket.sendLight(percent);
         updateLight(); 
       }
 

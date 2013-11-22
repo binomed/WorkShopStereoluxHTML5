@@ -8,8 +8,10 @@ sensor.factory('WebSocketFactory',['$rootScope', '$http', '$location', 'ModelFac
 	    if (data.type === 'changeRoute' && !model.mobile && data.source){
 	    	$rootScope.$apply(function(){
 	    		$rootScope.$broadcast('changeRouteEvt');
-	    		$location.path(data.data);
+	    		$location.path(data.data+"?mobile=true");
 	    	});
+	    }else if (data.type === 'morseText'){
+	    	$rootScope.$broadcast('morseEvt', data.data);
 	    }else{
 	    	$rootScope.$broadcast('SocketType'+data.type, data.data);
 	    }
@@ -38,6 +40,18 @@ sensor.factory('WebSocketFactory',['$rootScope', '$http', '$location', 'ModelFac
 		sendData('DevieMotionEvent', xAcceleration);
 	}
 
+	function sendLight(light){
+		sendData('LightEvent', light);
+	}
+
+	function sendProximity(proximity){
+		sendData('ProximityEvent', proximity);
+	}
+
+	function sendMorseText(moreseText){
+		sendData('morseText', moreseText);
+	}
+
 	function changeRoute(newRoute){
 		$rootScope.$broadcast('changeRouteEvt');
 		socket.emit('message',{
@@ -49,6 +63,9 @@ sensor.factory('WebSocketFactory',['$rootScope', '$http', '$location', 'ModelFac
 	return{
 		sendOrientation : sendOrientation,
 		sendDeviceMotion : sendDeviceMotion,
+		sendProximity : sendProximity,
+		sendLight : sendLight,
+		sendMorseText : sendMorseText,
 		changeRoute : changeRoute
 		
 	};

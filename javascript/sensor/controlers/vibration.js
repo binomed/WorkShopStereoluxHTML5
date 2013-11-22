@@ -1,8 +1,8 @@
 sensor.controller('VibrationCtrl', 
-	['$rootScope', '$scope', '$http','CheckFactory' ,'WebSocketFactory','ModelFactory',
-	function($rootScope, $scope, $http, check, socket, model) {
+	['$rootScope', '$scope', '$http', '$location','CheckFactory' ,'WebSocketFactory','ModelFactory',
+	function($rootScope, $scope, $http, $location, check, socket, model) {
 
-		$scope.available = check.vibrationAvailable();
+		$scope.available = check.vibrationAvailable() ||  $location.search().mobile;
 
 		socket.changeRoute("/vibration");
 		

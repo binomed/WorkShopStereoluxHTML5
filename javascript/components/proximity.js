@@ -21,6 +21,20 @@ components.directive('proximity', ['$rootScope', function ($rootScope) {
         pushButton.removeClass('press');
       }
      
+
+      function manageProximityValue(value){
+        if (value < 2){
+          pushTheButton();
+        }else{
+          unPushTheButton();
+        }        
+      }
+
+      $rootScope.$on('SocketTypeProximityEvent', function(event, data){
+        manageProximityValue(data);
+      });
+
+
       $rootScope.$on('changeRouteEvt', function(){
         window.removeEventListener('deviceproximity', deviceProximityHandler, false);
       });
@@ -31,11 +45,8 @@ components.directive('proximity', ['$rootScope', function ($rootScope) {
 
       var deviceProximityHandler = function(event) {
         var value = Math.round(event.value);            
-        if (value < 2){
-          pushTheButton();
-        }else{
-          unPushTheButton();
-        }
+        socket.sendProximity(value);
+        manageProximityValue(value);
       }
 
       window.addEventListener('deviceproximity', deviceProximityHandler, false);
