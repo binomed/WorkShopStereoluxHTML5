@@ -62,7 +62,6 @@ components.directive('light', ['$rootScope','WebSocketFactory', function ($rootS
       register();
         
     }
-      }
   };
   return directiveDefinitionObject;
 }]);
