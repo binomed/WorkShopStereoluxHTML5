@@ -12,6 +12,8 @@ sensor.factory('WebSocketFactory',['$rootScope', '$http', '$location', 'ModelFac
 	    	});
 	    }else if (data.type === 'morseText'){
 	    	$rootScope.$broadcast('morseEvt', data.data);
+	    }else if (data.type === 'WebSpeechEvent'){
+	    	$rootScope.$broadcast('gameEvent', data.data);
 	    }else{
 	    	$rootScope.$broadcast('SocketType'+data.type, data.data);
 	    }
@@ -52,6 +54,10 @@ sensor.factory('WebSocketFactory',['$rootScope', '$http', '$location', 'ModelFac
 		sendData('morseText', moreseText);
 	}
 
+	function sendWebSpeech(direction){
+		sendData('WebSpeechEvent', direction);
+	}
+
 	function changeRoute(newRoute){
 		$rootScope.$broadcast('changeRouteEvt');
 		sendData('changeRoute', newRoute);		
@@ -63,6 +69,7 @@ sensor.factory('WebSocketFactory',['$rootScope', '$http', '$location', 'ModelFac
 		sendProximity : sendProximity,
 		sendLight : sendLight,
 		sendMorseText : sendMorseText,
+		sendWebSpeech : sendWebSpeech,
 		changeRoute : changeRoute
 		
 	};

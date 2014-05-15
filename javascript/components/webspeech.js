@@ -1,4 +1,5 @@
-components.directive('webSpeech', ['$rootScope', function ($rootScope) {
+components.directive('webSpeech', ['$rootScope', 'WebSocketFactory', 
+  function ($rootScope, socket) {
    var directiveDefinitionObject = {
     templateUrl: 'partials/components/webspeech.html',
     replace: true,
@@ -83,6 +84,7 @@ components.directive('webSpeech', ['$rootScope', function ($rootScope) {
             }
             console.log("send game event : "+instruction);
             $rootScope.$broadcast('gameEvent', instruction);
+            socket.sendWebSpeech(instruction);
           }
         }
       }
